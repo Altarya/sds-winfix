@@ -40,6 +40,11 @@ extern const char *SDS_NOINIT;
 #include <stdarg.h>
 #include <stdint.h>
 
+#if defined(_WIN32)||defined(WIN32)
+    #include <basetsd.h>
+    typedef SSIZE_T ssize_t;
+#endif
+
 typedef char *sds;
 
 /* Note: sdshdr5 is never used, we just access the flags byte directly.
